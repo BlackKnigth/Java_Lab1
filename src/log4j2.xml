@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!-- Секция аппендеров -->
+    <Appenders>
+        <!-- Консольный аппендер -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </Console>
+
+        <!-- Файловый аппендер1 -->
+        <File name="All" fileName="All.log">
+            <PatternLayout>
+                <Pattern>%5p %20d{dd.MM.yyyy/HH:mm:ss} %20c{1.}.class  -  [%m] %n</Pattern>
+            </PatternLayout>
+        </File>
+        <!-- Файловый аппендер2 -->
+        <File name="Errors" fileName="Errors.log">
+            <PatternLayout>
+                <Pattern>%5p %20d{dd.MM.yyyy/HH:mm:ss} %20c{1.}.class  -  [%m] %throwable %n</Pattern>
+            </PatternLayout>
+        </File>
+
+    </Appenders>
+    <!-- Секция логгеров -->
+    <Loggers>
+        <Logger name="ru.bstu.it31.strel.lab1" level="all"/>
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="All"/>
+            <AppenderRef ref="Errors" level="warn"/>
+        </Root>
+    </Loggers>
+</Configuration>
